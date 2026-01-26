@@ -1,0 +1,46 @@
+import json
+
+data = {
+    "apple apple scab": "Apply fungicides such as captan or myclobutanil. Rake and destroy fallen leaves to reduce overwintering spores.",
+    "apple black rot": "Prune out dead or diseased branches. Remove mummified fruit from the tree. Apply fungicides if necessary.",
+    "apple cedar apple rust": "Remove nearby juniper/cedar hosts if possible. Apply fungicides like myclobutanil or sulfur during the spring.",
+    "apple healthy": "Your apple tree looks healthy! Maintain good care with regular watering and pruning.",
+    "blueberry healthy": "Your blueberry plant looks healthy! Ensure acidic soil and adequate moisture.",
+    "cherry including sour powdery mildew": "Apply sulfur-based fungicides or neem oil. Prune to improve air circulation.",
+    "cherry including sour healthy": "Your cherry tree looks healthy! Keep up the good work.",
+    "corn maize cercospora leaf spot gray leaf spot": "Use resistant hybrids. Rotate crops. Apply fungicides if the disease is severe.",
+    "corn maize common rust": "Plant resistant varieties. Fungicides are rarely needed unless the infection is severe in early stages.",
+    "corn maize northern leaf blight": "Use resistant hybrids. Rotate crops to reduce inoculum. Apply fungicides if necessary.",
+    "corn maize healthy": "Your corn plant looks healthy! Ensure proper nitrogen fertilization.",
+    "grape black rot": "Remove mummified berries. Prune for air circulation. Apply fungicides like mancozeb or myclobutanil.",
+    "grape esca black measles": "There is no cure. Remove and destroy infected vines to prevent spread. Prune late in the season.",
+    "grape leaf blight isariopsis leaf spot": "Apply fungicides. Improve air circulation by pruning.",
+    "grape healthy": "Your grape vine looks healthy! Maintain a good trellis system.",
+    "orange haunglongbing citrus greening": "There is no cure. Remove infected trees. Control the psyllid vector with insecticides.",
+    "peach bacterial spot": "Plant resistant varieties. Apply copper sprays during dormancy and early growing season.",
+    "peach healthy": "Your peach tree looks healthy! Prune annually to maintain shape and airflow.",
+    "pepper bell bacterial spot": "Use disease-free seeds. Rotate crops. Apply copper-based bactericides.",
+    "pepper bell healthy": "Your pepper plant looks healthy! Water consistently to prevent blossom end rot.",
+    "potato early blight": "Apply fungicides like chlorothalonil. Rotate crops. Remove infected plant debris.",
+    "potato late blight": "This is serious. Destroy infected plants immediately. Apply fungicides preventatively in humid weather.",
+    "potato healthy": "Your potato plant looks healthy! Hill soil around the base to protect tubers.",
+    "raspberry healthy": "Your raspberry plant looks healthy! Prune old canes after fruiting.",
+    "soybean healthy": "Your soybean plant looks healthy! Monitor for pests.",
+    "squash powdery mildew": "Apply neem oil or sulfur. Plant resistant varieties. Water at the base to keep leaves dry.",
+    "strawberry leaf scorch": "Remove infected leaves. Apply fungicides if severe. Ensure good drainage.",
+    "strawberry healthy": "Your strawberry plant looks healthy! Mulch to keep berries off the soil.",
+    "tomato bacterial spot": "Use disease-free seeds. Apply copper sprays. Rotate crops and avoid overhead watering.",
+    "tomato early blight": "Apply fungicides. Mulch to prevent soil splash. Remove lower infected leaves.",
+    "tomato late blight": "Remove and destroy infected plants. Apply fungicides like chlorothalonil preventatively.",
+    "tomato leaf mold": "Improve air circulation. Water at the base. Apply fungicides if necessary.",
+    "tomato septoria leaf spot": "Remove infected leaves. Apply fungicides. Rotate crops.",
+    "tomato spider mites two spotted spider mite": "Use insecticidal soap or neem oil. Introduce predatory mites.",
+    "tomato target spot": "Apply fungicides. Improve air circulation. Remove infected plant parts.",
+    "tomato yellow leaf curl virus": "Control whiteflies with insecticides or nets. Remove infected plants immediately.",
+    "tomato mosaic virus": "Remove infected plants. Wash hands after handling tobacco. Sanitize tools.",
+    "tomato healthy": "Your tomato plant looks healthy! Stake or cage plants for support.",
+    "background": "No plant detected. Please try again with a clear image of a plant leaf."
+}
+
+with open('web_app/data.json', 'w') as f:
+    json.dump(data, f, indent=4)

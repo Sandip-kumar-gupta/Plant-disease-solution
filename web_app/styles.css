@@ -1,0 +1,109 @@
+/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+html, body, [class*="css"] {
+    font-family: 'Outfit', sans-serif;
+    color: #ffffff;
+}
+
+/* Dark Theme Background */
+.stApp {
+    background-color: #0e1117;
+    background-image: radial-gradient(circle at 50% 50%, #1f2937 0%, #0e1117 100%);
+}
+
+/* Glassmorphism Containers */
+.css-1r6slb0, .css-12oz5g7, .stMarkdown, .stButton, .stFileUploader {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Hero Section */
+.hero-container {
+    padding: 2rem;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #4ade80, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #9ca3af;
+}
+
+/* File Uploader */
+.stFileUploader > div > div {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px dashed rgba(74, 222, 128, 0.5);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.stFileUploader > div > div:hover {
+    border-color: #4ade80;
+    background-color: rgba(74, 222, 128, 0.1);
+}
+
+/* Buttons */
+.stButton > button {
+    background: linear-gradient(90deg, #4ade80, #22c55e);
+    color: #000;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 222, 128, 0.4);
+    color: #000;
+}
+
+/* Prediction Result */
+.prediction-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.prediction-label {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #4ade80;
+}
+
+.confidence-bar {
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    overflow: hidden;
+}
+
+.confidence-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4ade80, #3b82f6);
+    border-radius: 4px;
+}
+
+/* Spinner */
+.stSpinner > div {
+    border-top-color: #4ade80 !important;
+}
