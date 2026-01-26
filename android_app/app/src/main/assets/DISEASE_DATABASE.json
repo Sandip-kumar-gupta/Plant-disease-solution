@@ -1,0 +1,308 @@
+{
+  "covid19": {
+    "id": "covid19",
+    "name": "COVID-19",
+    "confidence_threshold": 0.6,
+    "causes": {
+      "primary": "SARS-CoV-2 virus infection",
+      "transmission": "Airborne droplets from infected person",
+      "incubation_period": "2-14 days",
+      "details": "COVID-19 is caused by the SARS-CoV-2 virus. The virus spreads through respiratory droplets when an infected person coughs, sneezes, or talks. It can also spread by touching contaminated surfaces."
+    },
+    "symptoms": {
+      "common": ["fever", "cough", "fatigue", "loss of taste or smell"],
+      "severe": ["difficulty breathing", "persistent chest pain", "confusion"],
+      "onset": "2-14 days after exposure"
+    },
+    "prevention": {
+      "vaccine": "COVID-19 vaccination is the most effective prevention",
+      "measures": [
+        "Get fully vaccinated and boosters",
+        "Wear N95 mask in crowded areas",
+        "Maintain 6 feet distance from others",
+        "Wash hands frequently",
+        "Improve ventilation indoors",
+        "Stay home if sick"
+      ],
+      "effectiveness": "Vaccination reduces severe illness by 90%+"
+    },
+    "treatment": {
+      "stages": [
+        {
+          "name": "Mild Stage (Days 1-5)",
+          "duration": "First 5 days",
+          "description": "Most cases are mild. Self-care at home is recommended.",
+          "components": [
+            "Rest 7-10 days at home",
+            "Stay hydrated",
+            "Monitor oxygen levels if possible",
+            "Isolate from others"
+          ],
+          "medications": ["Ibuprofen", "Acetaminophen"],
+          "warning_signs": "Seek help if difficulty breathing or chest pain"
+        },
+        {
+          "name": "Moderate Stage (Days 5-14)",
+          "duration": "Days 5-14",
+          "description": "Some breathing difficulties may develop.",
+          "components": [
+            "Oxygen therapy if needed",
+            "Antiviral medications (Paxlovid)",
+            "Monitor vital signs daily",
+            "Continue isolation"
+          ],
+          "medications": ["Remdesivir", "Paxlovid (Nirmatrelvir/Ritonavir)"],
+          "warning_signs": "Seek hospital care if O2 drops below 92%"
+        },
+        {
+          "name": "Severe Stage (Days 14+)",
+          "duration": "Days 14 and beyond",
+          "description": "Severe pneumonia requiring hospitalization.",
+          "components": [
+            "Hospital admission required",
+            "Mechanical ventilation if needed",
+            "ICU monitoring",
+            "Multiple medications",
+            "Support care"
+          ],
+          "medications": ["High-flow oxygen", "Intubation", "Steroids (Dexamethasone)"],
+          "warning_signs": "Life-threatening - immediate hospitalization"
+        }
+      ],
+      "recovery_timeline": "Most people recover within 2-4 weeks. Severe cases may take months."
+    },
+    "medications": [
+      {
+        "name": "Acetaminophen (Tylenol)",
+        "dosage": "500-1000 mg",
+        "frequency": "Every 4-6 hours, max 4000 mg/day",
+        "purpose": "Fever and pain relief",
+        "side_effects": ["Nausea", "Liver damage if overdosed"],
+        "contraindications": "Do not exceed 4000 mg daily"
+      },
+      {
+        "name": "Ibuprofen (Advil, Motrin)",
+        "dosage": "400-600 mg",
+        "frequency": "Every 6-8 hours, max 2400 mg/day",
+        "purpose": "Fever, pain, and inflammation reduction",
+        "side_effects": ["Stomach upset", "Nausea", "Dizziness"],
+        "contraindications": "Not recommended for severe COVID or heart conditions"
+      },
+      {
+        "name": "Paxlovid (Nirmatrelvir/Ritonavir)",
+        "dosage": "300 mg nirmatrelvir + 100 mg ritonavir",
+        "frequency": "Twice daily for 5 days",
+        "purpose": "Antiviral - reduces severity",
+        "side_effects": ["Altered taste", "Diarrhea", "Drug interactions"],
+        "contraindications": "Must start within 5 days of symptom onset"
+      },
+      {
+        "name": "Remdesivir (Veklury)",
+        "dosage": "200 mg IV loading dose, then 100 mg daily",
+        "frequency": "IV infusion, 3-5 days",
+        "purpose": "Antiviral for severe COVID",
+        "side_effects": ["Infusion reactions", "Liver enzyme elevation"],
+        "contraindications": "For hospitalized patients only"
+      }
+    ],
+    "emergency": {
+      "signs": [
+        "Trouble breathing",
+        "Persistent pain or pressure in the chest",
+        "New confusion",
+        "Inability to wake or stay awake",
+        "Loss of color from lips or face",
+        "Oxygen saturation below 92%"
+      ],
+      "action": "CALL 911 IMMEDIATELY if any emergency signs appear",
+      "when_to_seek_care": [
+        "Difficulty breathing",
+        "Persistent chest pain",
+        "Severe fatigue",
+        "Confusion or altered mental status",
+        "Oxygen levels dropping"
+      ],
+      "prevention_of_severe": "Get vaccinated, especially with boosters. 90% of hospitalizations are unvaccinated."
+    },
+    "prognosis": {
+      "recovery_rate": "99.98% for vaccinated, 98% overall",
+      "expected_timeline": "2-4 weeks for most people",
+      "severe_cases": "5-7% of cases become severe",
+      "mortality": "0.1% overall (varies by age and vaccination status)",
+      "long_covid": "10-30% experience long-term symptoms (long COVID)"
+    },
+    "success_metrics": {
+      "short_term": {
+        "timeframe": "7 days",
+        "expectations": "Fever resolves, fatigue reduces by 50%",
+        "indicators": ["No fever", "Increased energy", "Normal oxygen levels"]
+      },
+      "medium_term": {
+        "timeframe": "30 days",
+        "expectations": "Return to normal activities",
+        "indicators": ["Can exercise", "No shortness of breath", "Full energy return"]
+      },
+      "long_term": {
+        "timeframe": "90+ days",
+        "expectations": "Complete recovery",
+        "indicators": ["No symptoms", "Full lung function", "Normal test results"]
+      }
+    },
+    "important_notes": "This is informational only and not a substitute for medical advice. Always consult with a healthcare provider for diagnosis and treatment. Seek emergency care for severe symptoms."
+  },
+  
+  "type2_diabetes": {
+    "id": "type2_diabetes",
+    "name": "Type 2 Diabetes",
+    "confidence_threshold": 0.65,
+    "causes": {
+      "primary": "Insulin resistance and pancreatic dysfunction",
+      "risk_factors": ["Obesity", "Sedentary lifestyle", "Genetic predisposition", "Age 45+"],
+      "details": "Type 2 diabetes develops when your body becomes resistant to insulin or the pancreas doesn't produce enough insulin to regulate blood sugar. It accounts for 90-95% of all diabetes cases."
+    },
+    "symptoms": {
+      "common": ["Increased thirst", "Frequent urination", "Increased hunger", "Fatigue"],
+      "mild": ["Blurred vision", "Slow healing cuts"],
+      "severe": ["Numbness in extremities", "Vision problems"],
+      "onset": "Gradual, often months or years"
+    },
+    "prevention": {
+      "weight_management": "Lose 5-10% of body weight",
+      "exercise": "150 minutes moderate exercise per week",
+      "diet": [
+        "Reduce refined carbohydrates",
+        "Increase fiber intake",
+        "Choose whole grains",
+        "Limit sugary drinks",
+        "Portion control"
+      ],
+      "lifestyle": ["Quit smoking", "Manage stress", "Sleep 7-9 hours"]
+    },
+    "treatment": {
+      "stages": [
+        {
+          "name": "Lifestyle Modification (Initial)",
+          "duration": "First 3 months",
+          "description": "First-line treatment focusing on diet and exercise",
+          "components": [
+            "Lose 5-10% of body weight",
+            "Eat balanced meals with vegetables",
+            "Exercise 150 minutes per week",
+            "Monitor blood sugar",
+            "Manage stress"
+          ],
+          "medications": [],
+          "effectiveness": "Can reverse or delay progression by 58%"
+        },
+        {
+          "name": "Medication Stage 1 (Months 3-6)",
+          "duration": "If lifestyle changes insufficient",
+          "description": "Start with first-line oral medications",
+          "components": [
+            "Take Metformin daily",
+            "Continue lifestyle changes",
+            "Monitor blood sugar regularly",
+            "Check A1C every 3 months",
+            "Manage diet"
+          ],
+          "medications": ["Metformin"],
+          "effectiveness": "Reduces A1C by 1-2%"
+        },
+        {
+          "name": "Medication Stage 2 (Months 6+)",
+          "duration": "If A1C still above target",
+          "description": "Add second medication if needed",
+          "components": [
+            "Continue Metformin",
+            "Add secondary medication",
+            "Increase exercise if possible",
+            "Regular monitoring",
+            "Specialist consultation"
+          ],
+          "medications": ["Metformin + SGLT2i or GLP-1 agonist"],
+          "effectiveness": "Better blood sugar control"
+        }
+      ],
+      "recovery_timeline": "Remission possible with 15+ kg weight loss in first 5 years"
+    },
+    "medications": [
+      {
+        "name": "Metformin",
+        "dosage": "500-2000 mg daily (divided doses)",
+        "frequency": "Usually twice daily with meals",
+        "purpose": "Reduce blood sugar, improve insulin sensitivity",
+        "side_effects": ["Nausea", "Diarrhea", "Vitamin B12 deficiency"],
+        "monitoring": "Check kidney function regularly"
+      },
+      {
+        "name": "Lisinopril (ACE Inhibitor)",
+        "dosage": "10-40 mg daily",
+        "frequency": "Once daily",
+        "purpose": "Control blood pressure, protect kidneys",
+        "side_effects": ["Dry cough", "Dizziness", "Fatigue"],
+        "monitoring": "Check potassium levels, kidney function"
+      },
+      {
+        "name": "Atorvastatin (Statin)",
+        "dosage": "20-80 mg daily",
+        "frequency": "Once daily, usually at night",
+        "purpose": "Manage cholesterol, reduce heart disease risk",
+        "side_effects": ["Muscle pain", "Liver enzyme elevation"],
+        "monitoring": "Check liver enzymes, lipid panel annually"
+      },
+      {
+        "name": "Glipizide (Sulfonylurea)",
+        "dosage": "5-20 mg daily",
+        "frequency": "Once or twice daily before meals",
+        "purpose": "Stimulate insulin release",
+        "side_effects": ["Hypoglycemia", "Weight gain", "Nausea"],
+        "monitoring": "Monitor blood sugar frequently"
+      }
+    ],
+    "emergency": {
+      "signs": [
+        "Blood sugar above 400 mg/dL with symptoms",
+        "Diabetic ketoacidosis: fruity breath, nausea, rapid breathing",
+        "Severe hypoglycemia: confusion, seizures, loss of consciousness",
+        "Vision changes, severe headaches",
+        "Chest pain or shortness of breath"
+      ],
+      "action": "CALL 911 for severe hypoglycemia or DKA symptoms",
+      "routine_care": "Regular visits to endocrinologist and primary care",
+      "prevention": "Proper medication, diet, exercise, and monitoring"
+    },
+    "prognosis": {
+      "complication_risk": "40% develop complications without treatment",
+      "remission_possibility": "Type 2 remission possible with significant weight loss (15+ kg)",
+      "expected_lifespan": "Normal with proper management",
+      "quality_of_life": "Excellent with adherence to treatment plan",
+      "progression": "Without treatment: worsening over 5-10 years"
+    },
+    "success_metrics": {
+      "short_term": {
+        "timeframe": "3 months",
+        "expectations": "Blood sugar stabilization",
+        "indicators": ["A1C < 7%", "Weight loss 5-10%", "Normal fasting glucose"]
+      },
+      "medium_term": {
+        "timeframe": "1 year",
+        "expectations": "Medication optimization",
+        "indicators": ["A1C < 6.5%", "Weight stable", "No complications"]
+      },
+      "long_term": {
+        "timeframe": "5+ years",
+        "expectations": "Complication prevention",
+        "indicators": ["No kidney disease", "Normal eye exams", "Normal nerve function"]
+      }
+    },
+    "monitoring": {
+      "blood_sugar": "Fasting and before meals",
+      "A1C_test": "Every 3 months initially, then every 6 months",
+      "kidney_function": "Annual creatinine and urine protein",
+      "eye_exams": "Annual dilated eye exam",
+      "foot_exams": "Monthly self-exam, annual professional",
+      "cardiovascular": "Blood pressure and lipid panel annually"
+    },
+    "important_notes": "Type 2 diabetes is manageable and sometimes reversible with lifestyle changes. This information is for education only. Work with your healthcare provider for personalized treatment."
+  }
+}
