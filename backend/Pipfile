@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = "*"
+uvicorn = {extras = ["standard"], version = "*"}
+tflite-runtime = "*"
+pillow = "*"
+numpy = "*"
+python-multipart = "*"
+pydantic = "*"
+google-generativeai = "*"
+
+[requires]
+python_version = "3.9"

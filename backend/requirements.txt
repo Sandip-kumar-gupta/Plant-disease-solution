@@ -1,7 +1,7 @@
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
 # tensorflow-cpu>=2.16.0
-tflite-runtime>=2.14.0
+tflite-runtime
 pillow>=10.0.0
 numpy>=1.26.0
 python-multipart==0.0.6
