@@ -9,7 +9,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - GEMINI_API_KEY=AIzaSyCfZicYuB0XRK-t_vgsn0yrdqk6PzO_qA4
+      - GEMINI_API_KEY=AIzaSyAX7rWNNbZ90pHAmmrG8DOvTTn_VK4KSFc
     restart: always
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8000/health" ]

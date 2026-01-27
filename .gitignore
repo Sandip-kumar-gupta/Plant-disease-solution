@@ -1,42 +1,146 @@
-venv/
-web_venv/
-backend_venv/
-*_venv/
-.venv/
-env/
-node_modules/
+# Environment variables and secrets
+.env
+.env.local
+.env.production
+.env.staging
+*.env
+
+# API Keys and tokens
+**/api_keys.txt
+**/tokens.txt
+**/*_key.txt
+**/*_token.txt
+
+# Python
 __pycache__/
-*.pyc
-.DS_Store
-.idea/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+backend_venv/
+web_venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs
 .vscode/
-*.log
-
-# User requested ignores
-*.md
-docs/
-
-# Android/Gradle standard ignores
-.gradle/
-build/
-app/build/
-*.iml
-local.properties
-.navigation/
-captures/
-.externalNativeBuild/
-.cxx/
-*.apk
-*.aar
-*.keystore
-!google-services.json
-.DS_Store
 .idea/
-*.iml
-.kotlin/
-.gradle/
-build/
-capture/
-memory_roller/
+*.swp
+*.swo
+*~
 
-*.txt
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+backend/backend.log
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Redis dump
+dump.rdb
+
+# Docker
+.dockerignore
+
+# Node modules (if any)
+node_modules/
+
+# Android
+android_app/.gradle/
+android_app/.idea/
+android_app/build/
+android_app/app/build/
+android_app/outputs/
+android_app/local.properties
+android_app/.DS_Store
+android_app/captures/
+android_app/.externalNativeBuild/
+android_app/.cxx/
+
+# Model files (if large)
+*.tflite.backup
+*.h5.backup
+
+# Test files
+test_*.py
+*_test.py
+
+# Cache
+.cache/
+.pytest_cache/
+
+# Coverage
+.coverage
+htmlcov/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
