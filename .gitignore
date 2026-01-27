@@ -40,3 +40,4 @@ capture/
 memory_roller/
 
 *.txt
+.env
