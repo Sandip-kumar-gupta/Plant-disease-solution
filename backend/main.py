@@ -1,3 +1,4 @@
+# Deployment Trigger: Force Vercel to pick up Python 3.9 config
 from fastapi import FastAPI, File, UploadFile, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
