@@ -2,7 +2,12 @@ from fastapi import FastAPI, File, UploadFile, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
-import tensorflow as tf
+try:
+    import tensorflow as tf
+    Interpreter = tf.lite.Interpreter
+except ImportError:
+    import tflite_runtime.interpreter as tflite
+    Interpreter = tflite.Interpreter
 import numpy as np
 from PIL import Image
 import io
@@ -159,7 +164,7 @@ async def load_resources():
             raise FileNotFoundError(f"Data file not found: {DATA_PATH}")
         
         # Load TFLite Model
-        interpreter = tf.lite.Interpreter(model_path=MODEL_PATH)
+        interpreter = Interpreter(model_path=MODEL_PATH)
         interpreter.allocate_tensors()
         logger.info("TensorFlow Lite model loaded successfully")
         
