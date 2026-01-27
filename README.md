@@ -48,48 +48,44 @@ FloraGuard AI is a comprehensive plant disease detection system that combines **
 
 ### Prerequisites
 - Python 3.9+
-- Redis Server
+- Redis Server (optional, for caching)
 - 8GB RAM minimum
 - Internet connection (for Gemini AI)
 
-### 1. Clone Repository
-```bash
-git clone https://github.com/your-username/floraguard-ai.git
-cd floraguard-ai
+### 🪟 **Windows Users**
+```cmd
+# Clone repository
+git clone https://github.com/Raj-glitch-max/Plant-disease-solution.git
+cd Plant-disease-solution
+
+# Run Windows setup script
+setup.bat setup
+
+# Configure API keys in .env file
+notepad .env
+
+# Start services
+setup.bat start
 ```
 
-### 2. Environment Setup
+### 🐧 **Linux/macOS Users**
 ```bash
-# Create virtual environments
-cd backend && python -m venv backend_venv && source backend_venv/bin/activate
-pip install -r requirements.txt
-cd ../web_app && python -m venv web_venv && source web_venv/bin/activate  
-pip install -r requirements.txt
-cd ..
+# Clone repository
+git clone https://github.com/Raj-glitch-max/Plant-disease-solution.git
+cd Plant-disease-solution
+
+# Run setup script
+chmod +x setup.sh
+./setup.sh setup
+
+# Configure API keys in .env file
+nano .env
+
+# Start services
+./setup.sh start
 ```
 
-### 3. Configure Environment
-```bash
-# Copy and edit environment file
-cp .env.example .env
-# Add your Gemini API key and Slack tokens
-```
-
-### 4. Start Services
-```bash
-# Terminal 1: Start Redis
-redis-server
-
-# Terminal 2: Start Backend
-cd backend
-./backend_venv/bin/python -c "import uvicorn; uvicorn.run('main:app', host='0.0.0.0', port=8001, reload=True)"
-
-# Terminal 3: Start Frontend  
-cd web_app
-./web_venv/bin/streamlit run app.py --server.port 8502
-```
-
-### 5. Access Application
+### 🌐 Access Application
 - **Web Interface**: http://localhost:8502
 - **API Documentation**: http://localhost:8001/docs
 - **Health Check**: http://localhost:8001/health
@@ -317,6 +313,8 @@ curl -X POST http://localhost:8001/reminder \
 - 📖 [User Experience Flow](USER_EXPERIENCE_FLOW.md) - Complete user journey
 - 🏗️ [Technical Architecture](TECHNICAL_ARCHITECTURE.md) - System design & AI details
 - 🔧 [Slack Setup Guide](SLACK_SETUP_GUIDE.md) - Notification configuration
+- 🪟 [Windows Setup Guide](WINDOWS_SETUP_GUIDE.md) - Windows-specific instructions
+- 🚀 [Deployment Guide](DEPLOYMENT_GUIDE.md) - Complete deployment instructions
 - 📊 [API Documentation](http://localhost:8001/docs) - Interactive API docs
 
 ## 🤝 Contributing
