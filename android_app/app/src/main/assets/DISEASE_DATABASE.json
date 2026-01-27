@@ -10,8 +10,17 @@
       "details": "COVID-19 is caused by the SARS-CoV-2 virus. The virus spreads through respiratory droplets when an infected person coughs, sneezes, or talks. It can also spread by touching contaminated surfaces."
     },
     "symptoms": {
-      "common": ["fever", "cough", "fatigue", "loss of taste or smell"],
-      "severe": ["difficulty breathing", "persistent chest pain", "confusion"],
+      "common": [
+        "fever",
+        "cough",
+        "fatigue",
+        "loss of taste or smell"
+      ],
+      "severe": [
+        "difficulty breathing",
+        "persistent chest pain",
+        "confusion"
+      ],
       "onset": "2-14 days after exposure"
     },
     "prevention": {
@@ -38,7 +47,10 @@
             "Monitor oxygen levels if possible",
             "Isolate from others"
           ],
-          "medications": ["Ibuprofen", "Acetaminophen"],
+          "medications": [
+            "Ibuprofen",
+            "Acetaminophen"
+          ],
           "warning_signs": "Seek help if difficulty breathing or chest pain"
         },
         {
@@ -51,7 +63,10 @@
             "Monitor vital signs daily",
             "Continue isolation"
           ],
-          "medications": ["Remdesivir", "Paxlovid (Nirmatrelvir/Ritonavir)"],
+          "medications": [
+            "Remdesivir",
+            "Paxlovid (Nirmatrelvir/Ritonavir)"
+          ],
           "warning_signs": "Seek hospital care if O2 drops below 92%"
         },
         {
@@ -65,7 +80,11 @@
             "Multiple medications",
             "Support care"
           ],
-          "medications": ["High-flow oxygen", "Intubation", "Steroids (Dexamethasone)"],
+          "medications": [
+            "High-flow oxygen",
+            "Intubation",
+            "Steroids (Dexamethasone)"
+          ],
           "warning_signs": "Life-threatening - immediate hospitalization"
         }
       ],
@@ -77,7 +96,10 @@
         "dosage": "500-1000 mg",
         "frequency": "Every 4-6 hours, max 4000 mg/day",
         "purpose": "Fever and pain relief",
-        "side_effects": ["Nausea", "Liver damage if overdosed"],
+        "side_effects": [
+          "Nausea",
+          "Liver damage if overdosed"
+        ],
         "contraindications": "Do not exceed 4000 mg daily"
       },
       {
@@ -85,7 +107,11 @@
         "dosage": "400-600 mg",
         "frequency": "Every 6-8 hours, max 2400 mg/day",
         "purpose": "Fever, pain, and inflammation reduction",
-        "side_effects": ["Stomach upset", "Nausea", "Dizziness"],
+        "side_effects": [
+          "Stomach upset",
+          "Nausea",
+          "Dizziness"
+        ],
         "contraindications": "Not recommended for severe COVID or heart conditions"
       },
       {
@@ -93,7 +119,11 @@
         "dosage": "300 mg nirmatrelvir + 100 mg ritonavir",
         "frequency": "Twice daily for 5 days",
         "purpose": "Antiviral - reduces severity",
-        "side_effects": ["Altered taste", "Diarrhea", "Drug interactions"],
+        "side_effects": [
+          "Altered taste",
+          "Diarrhea",
+          "Drug interactions"
+        ],
         "contraindications": "Must start within 5 days of symptom onset"
       },
       {
@@ -101,7 +131,10 @@
         "dosage": "200 mg IV loading dose, then 100 mg daily",
         "frequency": "IV infusion, 3-5 days",
         "purpose": "Antiviral for severe COVID",
-        "side_effects": ["Infusion reactions", "Liver enzyme elevation"],
+        "side_effects": [
+          "Infusion reactions",
+          "Liver enzyme elevation"
+        ],
         "contraindications": "For hospitalized patients only"
       }
     ],
@@ -135,35 +168,62 @@
       "short_term": {
         "timeframe": "7 days",
         "expectations": "Fever resolves, fatigue reduces by 50%",
-        "indicators": ["No fever", "Increased energy", "Normal oxygen levels"]
+        "indicators": [
+          "No fever",
+          "Increased energy",
+          "Normal oxygen levels"
+        ]
       },
       "medium_term": {
         "timeframe": "30 days",
         "expectations": "Return to normal activities",
-        "indicators": ["Can exercise", "No shortness of breath", "Full energy return"]
+        "indicators": [
+          "Can exercise",
+          "No shortness of breath",
+          "Full energy return"
+        ]
       },
       "long_term": {
         "timeframe": "90+ days",
         "expectations": "Complete recovery",
-        "indicators": ["No symptoms", "Full lung function", "Normal test results"]
+        "indicators": [
+          "No symptoms",
+          "Full lung function",
+          "Normal test results"
+        ]
       }
     },
     "important_notes": "This is informational only and not a substitute for medical advice. Always consult with a healthcare provider for diagnosis and treatment. Seek emergency care for severe symptoms."
   },
-  
   "type2_diabetes": {
     "id": "type2_diabetes",
     "name": "Type 2 Diabetes",
     "confidence_threshold": 0.65,
     "causes": {
       "primary": "Insulin resistance and pancreatic dysfunction",
-      "risk_factors": ["Obesity", "Sedentary lifestyle", "Genetic predisposition", "Age 45+"],
+      "risk_factors": [
+        "Obesity",
+        "Sedentary lifestyle",
+        "Genetic predisposition",
+        "Age 45+"
+      ],
       "details": "Type 2 diabetes develops when your body becomes resistant to insulin or the pancreas doesn't produce enough insulin to regulate blood sugar. It accounts for 90-95% of all diabetes cases."
     },
     "symptoms": {
-      "common": ["Increased thirst", "Frequent urination", "Increased hunger", "Fatigue"],
-      "mild": ["Blurred vision", "Slow healing cuts"],
-      "severe": ["Numbness in extremities", "Vision problems"],
+      "common": [
+        "Increased thirst",
+        "Frequent urination",
+        "Increased hunger",
+        "Fatigue"
+      ],
+      "mild": [
+        "Blurred vision",
+        "Slow healing cuts"
+      ],
+      "severe": [
+        "Numbness in extremities",
+        "Vision problems"
+      ],
       "onset": "Gradual, often months or years"
     },
     "prevention": {
@@ -176,7 +236,11 @@
         "Limit sugary drinks",
         "Portion control"
       ],
-      "lifestyle": ["Quit smoking", "Manage stress", "Sleep 7-9 hours"]
+      "lifestyle": [
+        "Quit smoking",
+        "Manage stress",
+        "Sleep 7-9 hours"
+      ]
     },
     "treatment": {
       "stages": [
@@ -205,7 +269,9 @@
             "Check A1C every 3 months",
             "Manage diet"
           ],
-          "medications": ["Metformin"],
+          "medications": [
+            "Metformin"
+          ],
           "effectiveness": "Reduces A1C by 1-2%"
         },
         {
@@ -219,7 +285,9 @@
             "Regular monitoring",
             "Specialist consultation"
           ],
-          "medications": ["Metformin + SGLT2i or GLP-1 agonist"],
+          "medications": [
+            "Metformin + SGLT2i or GLP-1 agonist"
+          ],
           "effectiveness": "Better blood sugar control"
         }
       ],
@@ -231,7 +299,11 @@
         "dosage": "500-2000 mg daily (divided doses)",
         "frequency": "Usually twice daily with meals",
         "purpose": "Reduce blood sugar, improve insulin sensitivity",
-        "side_effects": ["Nausea", "Diarrhea", "Vitamin B12 deficiency"],
+        "side_effects": [
+          "Nausea",
+          "Diarrhea",
+          "Vitamin B12 deficiency"
+        ],
         "monitoring": "Check kidney function regularly"
       },
       {
@@ -239,7 +311,11 @@
         "dosage": "10-40 mg daily",
         "frequency": "Once daily",
         "purpose": "Control blood pressure, protect kidneys",
-        "side_effects": ["Dry cough", "Dizziness", "Fatigue"],
+        "side_effects": [
+          "Dry cough",
+          "Dizziness",
+          "Fatigue"
+        ],
         "monitoring": "Check potassium levels, kidney function"
       },
       {
@@ -247,7 +323,10 @@
         "dosage": "20-80 mg daily",
         "frequency": "Once daily, usually at night",
         "purpose": "Manage cholesterol, reduce heart disease risk",
-        "side_effects": ["Muscle pain", "Liver enzyme elevation"],
+        "side_effects": [
+          "Muscle pain",
+          "Liver enzyme elevation"
+        ],
         "monitoring": "Check liver enzymes, lipid panel annually"
       },
       {
@@ -255,7 +334,11 @@
         "dosage": "5-20 mg daily",
         "frequency": "Once or twice daily before meals",
         "purpose": "Stimulate insulin release",
-        "side_effects": ["Hypoglycemia", "Weight gain", "Nausea"],
+        "side_effects": [
+          "Hypoglycemia",
+          "Weight gain",
+          "Nausea"
+        ],
         "monitoring": "Monitor blood sugar frequently"
       }
     ],
@@ -282,17 +365,29 @@
       "short_term": {
         "timeframe": "3 months",
         "expectations": "Blood sugar stabilization",
-        "indicators": ["A1C < 7%", "Weight loss 5-10%", "Normal fasting glucose"]
+        "indicators": [
+          "A1C < 7%",
+          "Weight loss 5-10%",
+          "Normal fasting glucose"
+        ]
       },
       "medium_term": {
         "timeframe": "1 year",
         "expectations": "Medication optimization",
-        "indicators": ["A1C < 6.5%", "Weight stable", "No complications"]
+        "indicators": [
+          "A1C < 6.5%",
+          "Weight stable",
+          "No complications"
+        ]
       },
       "long_term": {
         "timeframe": "5+ years",
         "expectations": "Complication prevention",
-        "indicators": ["No kidney disease", "Normal eye exams", "Normal nerve function"]
+        "indicators": [
+          "No kidney disease",
+          "Normal eye exams",
+          "Normal nerve function"
+        ]
       }
     },
     "monitoring": {
@@ -304,5 +399,50 @@
       "cardiovascular": "Blood pressure and lipid panel annually"
     },
     "important_notes": "Type 2 diabetes is manageable and sometimes reversible with lifestyle changes. This information is for education only. Work with your healthcare provider for personalized treatment."
+  },
+  "aceria_erinea": {
+    "id": "aceria_erinea",
+    "name": "Walnut Blister Mite (Aceria erinea)",
+    "causes": {
+      "primary": "Microscopic Eriophyid mites",
+      "details": "These mites overwinter in bud scales and move to new leaves in spring. Their feeding triggers the plant to grow these 'galls' or blisters as a protective reaction for the mite."
+    },
+    "prevention": {
+      "measures": [
+        "Prune and destroy heavily infested leaves in early spring.",
+        "Encourage natural predators like predatory mites and lacewings.",
+        "Maintain tree vigor through proper watering and fertilization."
+      ]
+    },
+    "treatment": {
+      "stages": [
+        {
+          "name": "Early Detection",
+          "description": "Visible yellow or green blisters on leaf surface.",
+          "components": [
+            "Remove affected leaves manually if the tree is small.",
+            "Apply sulfur-based sprays before buds open in next spring."
+          ],
+          "medications": [
+            "Wettable Sulfur"
+          ]
+        }
+      ]
+    },
+    "medications": [
+      {
+        "name": "Carbaryl or Dicofol",
+        "dosage": "As per manufacturer label for mites",
+        "frequency": "Once in early spring during bud break",
+        "side_effects": "Can harm beneficial insects; use sparingly."
+      }
+    ],
+    "emergency": {
+      "signs": [
+        "Total defoliation of the tree",
+        "Stunted growth of new shoots"
+      ],
+      "action": "Consult an arborist if more than 70% of the canopy is affected."
+    }
   }
 }

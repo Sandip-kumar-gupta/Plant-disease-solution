@@ -39,3 +39,4 @@ build/
 capture/
 memory_roller/
 
+*.txt

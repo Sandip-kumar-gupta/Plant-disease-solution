@@ -12,6 +12,7 @@ import logging
 from typing import List, Optional
 import time
 from datetime import datetime
+import google.generativeai as genai
 
 # Configure logging
 logging.basicConfig(
@@ -24,11 +25,19 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# Global variables for model and data
+interpreter = None
+gemini_model = None
+labels = []
+solutions = {}
+start_time = time.time()
+
 # Pydantic models for request/response validation
 class PredictionResponse(BaseModel):
     disease: str = Field(..., description="Detected disease name")
     confidence: float = Field(..., ge=0.0, le=1.0, description="Confidence score")
     solution: str = Field(..., description="Treatment solution")
+    layer: str = Field(..., description="The AI layer that produced this result (Layer 1 or Layer 2)")
     timestamp: str = Field(default_factory=lambda: datetime.now().isoformat())
     processing_time_ms: float = Field(..., description="Processing time in milliseconds")
 
@@ -94,9 +103,52 @@ start_time = time.time()
 
 @app.on_event("startup")
 async def load_resources():
-    global interpreter, labels, solutions
+    global interpreter, labels, solutions, gemini_model
     try:
         logger.info("Loading backend resources...")
+        
+        # Configure Gemini
+        GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+        if GEMINI_API_KEY:
+            logger.info(f"Configuring Gemini with key starting with {GEMINI_API_KEY[:5]}...")
+            genai.configure(api_key=GEMINI_API_KEY)
+            
+            # Robust Model Selection Strategy
+            candidate_models = [
+                'gemini-2.0-flash', # Try latest first (might have quota issues)
+                'gemini-flash-latest', # Points to latest stable flash (likely 1.5)
+                'gemini-1.5-flash',
+                'gemini-1.5-flash-latest',
+                'gemini-1.5-flash-001',
+                'gemini-1.5-flash-002',
+                'gemini-pro-latest',
+                'gemini-pro',
+                'gemini-1.0-pro'
+            ]
+            
+            active_model = None
+            for model_name in candidate_models:
+                try:
+                    logger.info(f"Testing model: {model_name}...")
+                    test_model = genai.GenerativeModel(model_name)
+                    # Simple test generation to verify access and quota
+                    response = test_model.generate_content("Test connection.")
+                    if response and response.text:
+                        active_model = test_model
+                        logger.info(f"✅ Successfully connected to {model_name}")
+                        break
+                except Exception as e:
+                    logger.warning(f"❌ Failed to connect to {model_name}: {e}")
+            
+            if active_model:
+                gemini_model = active_model
+                logger.info("Gemini Layer 2 fallback configured successfully.")
+            else:
+                logger.error("CRITICAL: All Gemini models failed. Layer 2 disabled.")
+                gemini_model = None
+        else:
+            logger.warning("GEMINI_API_KEY not found. Layer 2 fallback disabled.")
+            gemini_model = None
         
         # Validate file paths
         if not os.path.exists(MODEL_PATH):
@@ -174,6 +226,40 @@ def preprocess_image(image: Image.Image) -> np.ndarray:
             detail="Failed to process image"
         )
 
+async def get_gemini_prediction(image_bytes: bytes) -> Optional[dict]:
+    """Fallback to Gemini for universal detection"""
+    if not gemini_model:
+        return None
+    
+    try:
+        logger.info("Triggering Layer 2: Gemini Universal Detection...")
+        img = Image.open(io.BytesIO(image_bytes))
+        
+        prompt = """
+        Analyze this plant leaf image. 
+        1. Identify the specific disease or pest (e.g., 'Walnut Blister Mite').
+        2. Provide a professional treatment solution in 2-3 sentences.
+        Return ONLY a JSON object with keys: 'disease' and 'solution'.
+        """
+        
+        response = gemini_model.generate_content([prompt, img])
+        # Extract JSON from response
+        text = response.text.strip()
+        if "```json" in text:
+            text = text.split("```json")[1].split("```")[0].strip()
+        elif "```" in text:
+            text = text.split("```")[1].split("```")[0].strip()
+            
+        result = json.loads(text)
+        return {
+            "disease": result.get("disease", "Unknown Condition"),
+            "solution": result.get("solution", "Consult an expert."),
+            "confidence": 0.99 # Gemini is treated as high confidence
+        }
+    except Exception as e:
+        logger.error(f"Gemini fallback failed: {e}")
+        return None
+
 @app.get("/health", response_model=HealthResponse)
 async def health_check():
     """Health check endpoint with detailed status"""
@@ -187,7 +273,8 @@ async def health_check():
 
 @app.post("/predict", response_model=PredictionResponse)
 async def predict_disease(file: UploadFile = File(...)):
-    """Predict plant disease from uploaded image"""
+    """Predict plant disease from uploaded image with Layer 2 fallback"""
+    logger.info(f"Incoming prediction request for file: {file.filename}")
     start_time_request = time.time()
     
     if not interpreter:
@@ -209,7 +296,7 @@ async def predict_disease(file: UploadFile = File(...)):
                 detail=f"File too large. Maximum size: {MAX_FILE_SIZE // (1024*1024)}MB"
             )
         
-        # Open and preprocess image
+        # Open and preprocess image for TFLite
         try:
             image = Image.open(io.BytesIO(contents))
         except Exception as e:
@@ -221,42 +308,55 @@ async def predict_disease(file: UploadFile = File(...)):
         
         processed_image = preprocess_image(image)
         
-        # Get model input/output details
+        # Run TFLite Inference (Layer 1)
         input_details = interpreter.get_input_details()
         output_details = interpreter.get_output_details()
-        
-        # Set input tensor
         interpreter.set_tensor(input_details[0]['index'], processed_image)
-        
-        # Run inference
         interpreter.invoke()
-        
-        # Get prediction
         predictions = interpreter.get_tensor(output_details[0]['index'])[0]
         
-        # Get top prediction
         top_prediction_idx = np.argmax(predictions)
         confidence = float(predictions[top_prediction_idx])
         
+        logger.info(f"Layer 1 Result: {labels[top_prediction_idx] if top_prediction_idx < len(labels) else 'unknown'} | Confidence: {confidence:.4f}")
+        
+        # Layer 2 Fallback Logic: If confidence is low or unknown
+        if confidence < 0.9:
+            if gemini_model:
+                logger.info("Confidence < 0.9. Triggering Gemini Fallback...")
+                gemini_res = await get_gemini_prediction(contents)
+                if gemini_res:
+                    processing_time = (time.time() - start_time_request) * 1000
+                    logger.info(f"Layer 2 Result: {gemini_res['disease']} | Time: {processing_time:.1f}ms")
+                    return PredictionResponse(
+                        disease=f"[Universal] {gemini_res['disease']}",
+                        confidence=gemini_res['confidence'],
+                        solution=gemini_res['solution'],
+                        layer="Advanced Analysis",
+                        processing_time_ms=processing_time
+                    )
+            else:
+                logger.warning("Confidence < 0.9 but gemini_model is NOT initialized!")
+        else:
+            logger.info("Confidence >= 0.9. Staying with Layer 1.")
+
+        # Standard TFLite Result
         if top_prediction_idx < len(labels):
             disease_name = labels[top_prediction_idx]
         else:
-            logger.warning(f"Prediction index {top_prediction_idx} out of range for labels")
             disease_name = "unknown"
         
-        # Get solution with better key matching
-        # Convert model output format to solution key format
         solution_key = disease_name.replace("___", " ").replace("_", " ").lower().strip()
         solution = solutions.get(solution_key, "No specific solution available. Please consult with a plant pathologist for proper diagnosis and treatment.")
         
         processing_time = (time.time() - start_time_request) * 1000
-        
         logger.info(f"Prediction: {disease_name} (confidence: {confidence:.3f}, time: {processing_time:.1f}ms)")
         
         return PredictionResponse(
             disease=disease_name,
             confidence=confidence,
             solution=solution,
+            layer="Standard Analysis",
             processing_time_ms=processing_time
         )
         
