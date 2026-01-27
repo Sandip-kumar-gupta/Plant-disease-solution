@@ -7,7 +7,7 @@ import time
 from typing import Optional, Dict, Any
 from fpdf import FPDF
 import base64
-from datetime import datetime
+from datetime import datetime, timedelta
 import os
 
 # Set page config
@@ -562,8 +562,31 @@ if health_status.get("status") == "healthy":
                                         </span>
                                     </div>
                                     """, unsafe_allow_html=True)
-                                    if st.button(f"🔔 Set Reminder ({med['name']})", key=f"rem_{i}"):
-                                        st.toast(f"Reminder set for {med['name']}!")
+                                    with st.expander(f"🔔 Set Reminder ({med['name']})"):
+                                        st.caption(f"Schedule a reminder for **{med['name']}**")
+                                        rem_time = st.time_input("Select Time", value=datetime.now().time(), key=f"time_{i}")
+                                        
+                                        # Calculate datetime for the next occurrence of this time
+                                        now = datetime.now()
+                                        rem_dt = datetime.combine(now.date(), rem_time)
+                                        if rem_dt < now:
+                                            rem_dt += timedelta(days=1)
+                                            
+                                        # Google Calendar Link
+                                        start_str = rem_dt.strftime("%Y%m%dT%H%M%S")
+                                        end_str = (rem_dt + timedelta(minutes=15)).strftime("%Y%m%dT%H%M%S")
+                                        
+                                        event_title = f"Take {med['name']} - Plantify"
+                                        event_details = f"Dosage: {med.get('dosage', 'N/A')}. Frequency: {med.get('frequency', 'N/A')}."
+                                        
+                                        # URL Encode
+                                        import urllib.parse
+                                        title_enc = urllib.parse.quote(event_title)
+                                        details_enc = urllib.parse.quote(event_details)
+                                        
+                                        cal_url = f"https://calendar.google.com/calendar/render?action=TEMPLATE&text={title_enc}&dates={start_str}/{end_str}&details={details_enc}"
+                                        
+                                        st.markdown(f'<a href="{cal_url}" target="_blank" style="text-decoration:none; background-color:#4285F4; color:white; padding:8px 12px; border-radius:4px; display:inline-block;">📅 Add to Google Calendar</a>', unsafe_allow_html=True)
 
                         # 5. Emergency Signs
                         st.markdown("### ⚠️ Emergency Signs")
