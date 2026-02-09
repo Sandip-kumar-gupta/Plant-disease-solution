@@ -70,7 +70,7 @@ def init_redis():
         
         # Test connection
         redis_client.ping()
-        logger.info("✅ Redis connected successfully")
+        logger.info("[OK] Redis connected successfully")
         return True
     except Exception as e:
         logger.warning(f"⚠️ Redis connection failed: {e}")
@@ -86,13 +86,13 @@ def init_slack():
             slack_client = WebClient(token=slack_token)
             # Test connection
             slack_client.auth_test()
-            logger.info("✅ Slack client initialized successfully")
+            logger.info("[OK] Slack client initialized successfully")
             return True
         else:
-            logger.info("ℹ️ Slack token not provided, notifications disabled")
+            logger.info("[INFO] Slack token not provided, notifications disabled")
             return False
     except Exception as e:
-        logger.warning(f"⚠️ Slack initialization failed: {e}")
+        logger.warning(f"[WARNING] Slack initialization failed: {e}")
         slack_client = None
         return False
 
@@ -342,10 +342,10 @@ async def load_resources():
                     # Just initialize the model without making a request
                     test_model = genai.GenerativeModel(model_name)
                     active_model = test_model
-                    logger.info(f"✅ Model {model_name} initialized successfully")
+                    logger.info(f"[OK] Model {model_name} initialized successfully")
                     break
                 except Exception as e:
-                    logger.warning(f"❌ Failed to initialize {model_name}: {e}")
+                    logger.warning(f"[FAIL] Failed to initialize {model_name}: {e}")
             
             if active_model:
                 gemini_model = active_model
@@ -457,7 +457,7 @@ async def get_gemini_prediction(image_bytes: bytes) -> Optional[dict]:
         try:
             genai.configure(api_key=current_api_key)
             gemini_model = genai.GenerativeModel('gemini-flash-latest')
-            logger.info("✅ Gemini model initialized with API key")
+            logger.info("[OK] Gemini model initialized with API key")
         except Exception as e:
             logger.error(f"Failed to initialize Gemini: {e}")
             return None

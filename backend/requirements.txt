@@ -8,5 +8,4 @@ pydantic>=2.0.0
 google-generativeai
 redis>=5.0.0
 slack-sdk>=3.23.0
-hashlib2>=1.0.0
 
